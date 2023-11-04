@@ -5,11 +5,16 @@ require_once 'core/application.php';
 $app = new Application();
 
 $app->routes->get('/', function () {
-    return 'Hello world';
+    return 'Hemepage';
 });
-$app->routes->get('/contact', function () {
-    return 'Hello world';
+
+$app->routes->get('contact', function () {
+    return 'Hemepage';
 });
+
+
+//$app->routes->get('/contact', 'contact');
+
 
 $app->run();
 
