@@ -1,9 +1,13 @@
 <?php
-
-
 class Router
 {
-    protected array $routes = [];
+    public $request;
+    protected $routes = [];
+
+    public function __construct($request)
+    {
+        $this->request = $request;
+    }
 
     public function get($path, $callback)
     {
@@ -12,9 +16,17 @@ class Router
 
     public function resolve()
     {
-        $_SERVER;
-        echo '<prev>';
-        var_dump($_SERVER);
-        echo '<prev>';
+        $path = $this->request->getPath();
+        $method = $this->request->getMethod();
+        $callback=$this->routes[$method][$path] ?? false;
+        var_dump($callback) ;
+        /*
+       if($callback ===false){
+         echo "Not found";
+         exit;
+       }
+  echo call_user_func($callback);*/
     }
 }
+
+?>

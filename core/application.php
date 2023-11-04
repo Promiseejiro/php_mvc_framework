@@ -1,13 +1,17 @@
 <?php
 
-require_once './core/router.php';
+require_once 'router.php';
+require_once 'request.php';
 
 class Application
 {
-    public Router $routes;
+    public $routes;
+    public $request;
+
     public function __construct()
     {
-        $this->routes = new Router();
+        $this->request = new Request();
+        $this->routes = new Router($this->request);
     }
 
     public function run()
@@ -15,3 +19,5 @@ class Application
         $this->routes->resolve();
     }
 }
+
+?>

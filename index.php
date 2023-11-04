@@ -1,13 +1,16 @@
 <?php
 
-require_once './core/application.php';
+require_once 'core/application.php';
 
-$app= new Application();
+$app = new Application();
 
 $app->routes->get('/', function () {
-    return 'Helo world';
+    return 'Hello world';
+});
+$app->routes->get('/contact', function () {
+    return 'Hello world';
 });
 
+$app->run();
 
-
- $app->run();
+?>
