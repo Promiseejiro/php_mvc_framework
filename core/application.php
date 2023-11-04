@@ -7,7 +7,6 @@ class Application
 {
     public $routes;
     public $request;
-
     public function __construct()
     {
         $this->request = new Request();
@@ -16,7 +15,7 @@ class Application
 
     public function run()
     {
-        $this->routes->resolve();
+      echo  $this->routes->resolve();
     }
 }
 
