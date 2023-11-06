@@ -2,21 +2,29 @@
 
 require_once 'router.php';
 require_once 'request.php';
+require_once 'response.php';
+require_once 'controller.php';
+
 
 class Application
 {
-    public $routes;
-    public $request;
-    public function __construct()
-    {
-        $this->request = new Request();
-        $this->routes = new Router($this->request);
-    }
+  public $controller;
+  public $routes;
+  public $request;
+  public  $response;
+  public static Application $app;
+  public function __construct()
+  {
 
-    public function run()
-    {
-      echo  $this->routes->resolve();
-    }
+    // self::$app = $this;
+    $this->request = new Request();
+    $this->response = new Response();
+    $this->controller =new Controller();
+    $this->routes = new Router($this->request, $this->response);
+  }
+
+  public function run()
+  {
+    echo  $this->routes->resolve();
+  }
 }
-
-?>
